@@ -1,0 +1,32 @@
+{{>layouts/header}}
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Content</th>
+    </tr>
+    </thead>
+    <tbody>
+    <<!-- 모델에 등록된 데이터는 '#'을 통해 가져올 수 있음 -->>
+    {{#article}}
+    <tr>
+        <th>{{id}}</th>
+        <td>{{title}}</td>
+        <td>{{content}}</td>
+    </tr>
+    {{/article}}
+    <!-- 이 간격 안에서 article을 사용할 수 있음 -->
+    </tbody>
+</table>
+
+<a href="/articles/{{article.id}}/edit" class="btn btn-primary">Edit</a>
+<!-- POST(생성), GET(조회), UPDATE(수정), DELETE(삭제) -->
+<!-- HTML은 POST, GET만 제공, 따라서 임의로 GET방식을 제공하는 a태그 = 링크를 사용한다 -->
+<a href="/articles/{{article.id}}/delete" class="btn btn-danger">Delete</a>
+<a href="/articles">Go to Aritcle List</a>
+
+{{>comments/_comments}}
+
+{{>layouts/footer}}
